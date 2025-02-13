@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bday web</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #background {
+            background-size: cover;
+            background-position: center;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            transition: background-image 1s ease-in-out;
+        }
+
+        #content {
+            position: relative;
+            height: 10vh;
+            color: white;
+            text-align: center;
+            padding: 80px;
+        }
+
+        audio {
+            position: fixed;
+            bottom: 7px;
+            left: 3px;
+            background-color: #FF7518;
+            border-radius: 5px;
+            padding: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div id="background"></div>
+    
+    <div id="content">
+        <p>pretty cool right</p>
+    </div>
+
+    <audio id="background-music" controls loop autoplay>
+        <source src="./happy bday d.mp3" type="audio/mpeg">
+        Your browser does not support the audio element. Sad life.
+    </audio>
+
+    <script>
+        const images = [
+            './bkg1.png',
+            './bkg2.png',
+            './bkg3.png'
+        ];
+
+        let current = 0;
+        const background = document.getElementById('background');
+
+        function changeBackground() {
+            current = (current + 1) % images.length;
+            background.style.backgroundImage = `url('${images[current]}')`;
+        }
+
+        // first bkg
+        background.style.backgroundImage = `url('${images[0]}')`;
+        
+        // every 3 sec
+        setInterval(changeBackground, 3000);
+    </script>
+</body>
+</html>
